@@ -118,35 +118,43 @@ git add README
 git log : will show your commit history 
 
 
-
-
-
-
-
 When you have a message like:
 "Your branch and 'origin/master' have diverged, # and have 1 and 1 different commit(s) each, respectively."
-, check if you need to update origin. If origin is up-to-date, then some commits have been pushed to origin from another repo while you made your own commits locally.
-... o ---- o ---- A ---- B origin/master (upstream work) \ C master (your work)
+
+, check if you need to update origin.
+
+If origin is up-to-date, then some commits have been pushed to origin from another repo while you made your own commits locally.
+
+    ... o ---- o ---- A ---- B origin/master (upstream work) \ C master (your work)
 You based commit C on commit A because that was the latest work you had fetched from upstream at the time.
 However, before you tried to push back to origin someone else pushed commit B.
 Development history has diverged into separate paths. 
 You can then merge or rebase. See Pro Git: Git Branching - Rebasing for details.
+
 Merge
 Use the git merge command:
-$ git merge origin/master
+
+    $ git merge origin/master
+    
 This tells Git to integrate the changes from origin/master into your work and create a merge commit.
 The graph of history now looks like this: 
-... o ---- o ---- A ---- B origin/master (upstream work) \ \ C ---- M master (your work)
+
+    ... o ---- o ---- A ---- B origin/master (upstream work) \ \ C ---- M master (your work)
+    
 The new merge commit M has two parents, each representing one path of development that led to the content stored in the commit.
 Note that the history behind M is now non-linear.
 Rebase
 Use the git rebase command:
-$ git rebase origin/master
+
+    $ git rebase origin/master
+    
 This tells Git to replay commit C (your work) as if you had based it on commit B instead of A.
 CVS and Subversion users routinely rebase their local changes on top of upstream work when they update before commit.
 Git just adds explicit separation between the commit and rebase steps.
 The graph of history now looks like this:
-... o ---- o ---- A ---- B origin/master (upstream work) \ C' master (your work)
+
+    ... o ---- o ---- A ---- B origin/master (upstream work) \ C' master (your work)
+    
 Commit C' is a new commit created by the git rebase command.
 It is different from C in two ways:
 It has a different history: B instead of A.
@@ -155,10 +163,13 @@ Note that the history behind C' is still linear.
 We have chosen (for now) to allow only linear history in cmake.org/cmake.git.
 This approach preserves the CVS-based workflow used previously and may ease the transition.
 An attempt to push C' into our repository will work (assuming you have permissions and no one has pushed while you were rebasing).
+
 The git pull command provides a shorthand way to fetch from origin and rebase local work on it:
-$ git pull --rebase
+
+    $ git pull --rebase
+    
 This combines the above fetch and rebase steps into one command.
 
-git reset --hard origin/master
+    git reset --hard origin/master
 
 This can do
