@@ -174,6 +174,9 @@ This combines the above fetch and rebase steps into one command.
 
 This can do
 
+Making branches effectively. Use source tree to visualize it. 
+
 Bitbucket
 
 - Currently building a "Sunka" (Philippin traditional game) with adroid studio. 
+- 
