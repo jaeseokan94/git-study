@@ -176,7 +176,27 @@ This can do
 
 Making branches effectively. Use source tree to visualize it. 
 
-Bitbucket
+
+
+
+Pushing your remote files to origin 
+
+    git push remote-name origin-name 
+
+
+If you want to see more information about a particular remote 
+
+    git remote show remote-name 
+
+
+git ALiases -> Making a name for git command 
+If you do following command, you can only type git co instead of git checkout
+
+    $ git config --global alias.co checkout 
+					
+
+
+
 
 - Currently building a "Sunka" (Philippin traditional game) with adroid studio. 
 - 
