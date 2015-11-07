@@ -194,9 +194,14 @@ If you do following command, you can only type git co instead of git checkout
 
     $ git config --global alias.co checkout 
 					
+Git force push
 
+git push origin master -f
 
 
 
 - Currently building a "Sunka" (Philippin traditional game) with adroid studio. 
 - 
+
+
+
